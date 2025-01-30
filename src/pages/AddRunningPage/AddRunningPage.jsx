@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./AddRuningPage.css";
 
 const AddRunningPage = () => {
-  const [type, setType] = useState("");
+  const [trainingType, setTrainingType] = useState("");
+  const [runType, setRunType] = useState("");
   const [date, setDate] = useState("");
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
@@ -16,7 +17,8 @@ const AddRunningPage = () => {
     e.preventDefault();
 
     const formData = {
-      type,
+      trainingType,
+      runType,
       date,
       distance,
       duration,
@@ -39,17 +41,32 @@ const AddRunningPage = () => {
       <h2>Add a New Running Session</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Type of Run:</label>
+          <label>Type of Training:</label>
           <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
+            value={trainingType}
+            onChange={(e) => setTrainingType(e.target.value)}
             required
           >
-            <option value="">Select a run type</option>
+            <option value="">Select a trainig type</option>
             <option value="longRun">Long Run</option>
             <option value="intervalRun">Interval Run</option>
             <option value="recoveryRun">Recovery Run</option>
             <option value="tempoRun">Tempo Run</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Type of Run:</label>
+          <select
+            value={runType}
+            onChange={(e) => setRunType(e.target.value)}
+            required
+          >
+            <option value="">Select a run type</option>
+            <option value="streetRun">Street Run</option>
+            <option value="trailRun">Trail Run</option>
+            <option value="trackRun">Track Run</option>
+            <option value="treadmillRun">Treadmill Run</option>
           </select>
         </div>
 
@@ -105,12 +122,32 @@ const AddRunningPage = () => {
         </div>
 
         <div>
-          <label>Is the training completed?</label>
-          <input
-            type="checkbox"
-            checked={isDone}
-            onChange={() => setIsDone(!isDone)}
-          />
+          <label>Run Status:</label>
+          <div className="status-container">
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="completed"
+                checked={isDone === true}
+                onChange={() => setIsDone(true)}
+              />
+              Completed
+              <span className="checkmark"></span> {/* Caixa personalizada */}
+            </label>
+
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="scheduled"
+                checked={isDone === false}
+                onChange={() => setIsDone(false)}
+              />
+              Scheduled
+              <span className="checkmark"></span> {/* Caixa personalizada */}
+            </label>
+          </div>
         </div>
 
         <div>
