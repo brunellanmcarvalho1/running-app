@@ -5,12 +5,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddRunningPage from "./pages/AddRunningPage/AddRunningPage";
 import HomePage from "./pages/HomePage/HomePage";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Navbar/Navbar"
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="app-container">
+      <Navbar /> 
         <div className="main-content">
           <Sidebar />
           <Routes>
@@ -18,7 +21,9 @@ function App() {
             <Route path="/add-running" element={<AddRunningPage />} />
           </Routes>
         </div>
+        <Footer />
       </div>
+      <></>
     </Router>
   );
 }
