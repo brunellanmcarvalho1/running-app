@@ -9,8 +9,9 @@ const AddRunningPage = () => {
   const [duration, setDuration] = useState("");
   const [pace, setPace] = useState("");
   const [notes, setNotes] = useState("");
-  const [isDone, setIsDone] = useState(true);
-  const [picture, setPicture] = useState(null);
+  const [isDone, setIsDone] = useState(false);
+  const [effort, setEffort] = useState(null);
+  const [picture, setPicture] = useState("");
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -25,6 +26,7 @@ const AddRunningPage = () => {
       pace,
       notes,
       isDone,
+      effort,
       picture,
     };
     console.log("Form Data:", formData);
@@ -133,7 +135,7 @@ const AddRunningPage = () => {
                 onChange={() => setIsDone(true)}
               />
               Completed
-              <span className="checkmark"></span> {/* Caixa personalizada */}
+              <span className="checkmark"></span>
             </label>
 
             <label className="custom-checkbox">
@@ -145,9 +147,38 @@ const AddRunningPage = () => {
                 onChange={() => setIsDone(false)}
               />
               Scheduled
-              <span className="checkmark"></span> {/* Caixa personalizada */}
+              <span className="checkmark"></span>
             </label>
           </div>
+        </div>
+
+        <div>
+          <label>Perceived Effort (1 to 5):</label>
+          <select
+            value={effort}
+            onChange={(e) => setEffort(e.target.value)}
+            disabled={isDone === false}
+            required
+          >
+            <option value="">Select Effort Level</option>
+            <option value="1">
+              1. Very light – Almost no effort, you feel comfortable.
+            </option>
+            <option value="2">
+              2. Light – A smooth effort, like a light jog.
+            </option>
+            <option value="3">
+              3. Moderate – Medium intensity effort, you feel your body working
+              but can still keep up the pace.
+            </option>
+            <option value="4">
+              4. Intense – Strong effort, you’re challenged but can still
+              continue.
+            </option>
+            <option value="5">
+              5. Very intense – At your limit, very hard to maintain.
+            </option>
+          </select>
         </div>
 
         <div>
