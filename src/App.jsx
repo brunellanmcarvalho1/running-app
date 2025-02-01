@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddRunningPage from "./pages/AddRunningPage/AddRunningPage";
 import HomePage from "./pages/HomePage/HomePage";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import About from "./pages/AboutPage/About";
 import TrainingDetails from "./components/TrainingDetails";
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-      <Navbar /> 
+        <Navbar />
         <div className="main-content">
           <Sidebar />
           <Routes>

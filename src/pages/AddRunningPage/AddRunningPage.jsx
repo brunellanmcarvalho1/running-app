@@ -11,9 +11,8 @@ const AddRunningPage = () => {
   const [notes, setNotes] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [effort, setEffort] = useState("");
-  //const [picture, setPicture] = useState("");
 
-  // Função async para lidar com o envio do formulário
+  // Async function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,7 +35,7 @@ const AddRunningPage = () => {
     //   data.append(key, value);
     // }
 
-    // // Se houver uma imagem, anexa ao FormData
+    // // If there is an image, attach it to the FormData
     // if (picture) {
     //   const fileInput = document.querySelector('input[type="file"]');
     //   const file = fileInput.files[0];
@@ -46,7 +45,7 @@ const AddRunningPage = () => {
     // }
 
     try {
-      // Envia os dados para o backend
+      // Sends data to the backend
       const response = await fetch(
         "https://running-app-backend-zuaf.onrender.com/trainings",
         {
@@ -57,13 +56,13 @@ const AddRunningPage = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Erro ao salvar treino.");
+        throw new Error("Error saving training");
       }
 
       const result = await response.json();
       console.log("Training Save", result);
     } catch (error) {
-      console.error("Erro ao salvar treino:", error);
+      console.error("Error saving training", error);
     }
   };
 
