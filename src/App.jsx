@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer";
 import About from "./pages/AboutPage/About";
+import TrainingDetails from "./components/TrainingDetails";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/add-running" element={<AddRunningPage />} />
             <Route path="/about" element={<About />} />
+            <Route path="/training/:trainingId" element={<TrainingDetails />} />
           </Routes>
         </div>
         <Footer />
