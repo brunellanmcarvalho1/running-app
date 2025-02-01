@@ -23,7 +23,7 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <h1>Welcome to Your Running Tracker!</h1>
+      <h1>Welcome to Run.Ella, your running tracker!</h1>
       <p>Here, you'll see all your past and future training sessions.</p>
 
       {backendData && !backendData.error ? (
