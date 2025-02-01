@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./HomePage.css";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [backendData, setBackendData] = useState(null);
@@ -70,6 +71,7 @@ const HomePage = () => {
                     <td>{run.effort}</td>
                     <td>{run.notes}</td>
                     <td>
+                    <Link to={`/training/${run.id}`}>View Details</Link> {/* Create a link to the TrainingDetails page */}
                       <img
                         src={run.picture}
                         alt="Run"
