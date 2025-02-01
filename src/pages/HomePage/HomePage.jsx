@@ -18,7 +18,7 @@ const HomePage = () => {
         setError("Failed to fetch data.");
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Carregamento concluído
+        setLoading(false);
       }
     };
 
@@ -39,7 +39,7 @@ const HomePage = () => {
       <p>Here, you'll see all your past and future training sessions.</p>
 
       {error ? (
-        <p>{error}</p> // Exibe a mensagem de erro caso ocorra
+        <p>{error}</p>
       ) : (
         <div>
           <h2>Training Log</h2>
@@ -61,8 +61,6 @@ const HomePage = () => {
               {backendData && backendData.length > 0 ? (
                 backendData.map((run, index) => (
                   <tr key={run.id || index}>
-                    {" "}
-                    {/* Use 'id' ou 'index' como chave */}
                     <td>{run.date}</td>
                     <td>{run.trainingType}</td>
                     <td>{run.runType}</td>

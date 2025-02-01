@@ -11,7 +11,7 @@ const AddRunningPage = () => {
   const [notes, setNotes] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [effort, setEffort] = useState("");
-  const [picture, setPicture] = useState("");
+  //const [picture, setPicture] = useState("");
 
   // Função async para lidar com o envio do formulário
   const handleSubmit = async (e) => {
@@ -27,24 +27,23 @@ const AddRunningPage = () => {
       notes,
       isDone,
       effort,
-      picture,
+      //
     };
 
-    // Usando FormData para enviar os dados, incluindo imagem se houver
-    const data = new FormData();
-    // Adiciona os dados do formulário ao FormData
-    for (const [key, value] of Object.entries(formData)) {
-      data.append(key, value);
-    }
+    // const data = new FormData();
+    // // Adiciona os dados do formulário ao FormData
+    // for (const [key, value] of Object.entries(formData)) {
+    //   data.append(key, value);
+    // }
 
-    // Se houver uma imagem, anexa ao FormData
-    if (picture) {
-      const fileInput = document.querySelector('input[type="file"]');
-      const file = fileInput.files[0];
-      if (file) {
-        data.append("picture", file);
-      }
-    }
+    // // Se houver uma imagem, anexa ao FormData
+    // if (picture) {
+    //   const fileInput = document.querySelector('input[type="file"]');
+    //   const file = fileInput.files[0];
+    //   if (file) {
+    //     data.append("picture", file);
+    //   }
+    // }
 
     try {
       // Envia os dados para o backend
@@ -52,7 +51,8 @@ const AddRunningPage = () => {
         "https://running-app-backend-zuaf.onrender.com/trainings",
         {
           method: "POST",
-          body: data,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         }
       );
 
@@ -61,18 +61,15 @@ const AddRunningPage = () => {
       }
 
       const result = await response.json();
-      console.log("Treino salvo com sucesso:", result);
-      // Aqui você pode redirecionar o usuário ou mostrar uma mensagem de sucesso
+      console.log("Training Save", result);
     } catch (error) {
       console.error("Erro ao salvar treino:", error);
-      // Aqui você pode mostrar uma mensagem de erro para o usuário
     }
   };
 
-  // Função para lidar com o upload da imagem
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setPicture(URL.createObjectURL(file)); // Exibe a imagem na tela (preview)
+    setPicture(URL.createObjectURL(file));
   };
 
   return (
@@ -218,11 +215,11 @@ const AddRunningPage = () => {
           </select>
         </div>
 
-        <div>
+        {/* <div>
           <label>Upload a Picture (Optional):</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
           {picture && <img src={picture} alt="Preview" />}
-        </div>
+        </div> */}
 
         <div>
           <button type="submit">Save Run</button>
