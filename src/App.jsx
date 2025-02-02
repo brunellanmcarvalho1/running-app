@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import About from "./pages/AboutPage/About";
-import TrainingDetails from "./components/TrainingDetails";
+import TrainingDetails from "./pages/Trainingdetails/TrainingDetails";
 import "./App.css";
 
 function App() {

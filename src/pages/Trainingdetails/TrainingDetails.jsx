@@ -222,7 +222,8 @@ const TrainingDetails = () => {
       ) : (
         <div>
           <p><strong>Date:</strong> {training.date}</p>
-          <p><strong>Type:</strong> {training.trainingType} - {training.runType}</p>
+          <p><strong>Type of training:</strong> {training.trainingType}</p>
+          <p><strong>Type of run:</strong> {training.runType}</p>
           <p><strong>Distance:</strong> {training.distance} km</p>
           <p><strong>Duration:</strong> {training.duration} min</p>
           <p><strong>Pace:</strong> {training.pace}</p>
