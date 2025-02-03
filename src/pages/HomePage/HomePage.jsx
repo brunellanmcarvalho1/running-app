@@ -1,7 +1,8 @@
+// pages/HomePage.jsx
 import { useState, useEffect } from "react";
 import "./HomePage.css";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import TrainingCard from "../../components/TrainingCard/TrainingCard";
 
 const HomePage = () => {
   const [backendData, setBackendData] = useState(null);
@@ -44,50 +45,15 @@ const HomePage = () => {
       ) : (
         <div>
           <h2>Training Log</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Training Type</th>
-                <th>Run Type</th>
-                <th>Distance (km)</th>
-                <th>Duration (min)</th>
-                <th>Pace</th>
-                <th>Effort</th>
-                <th>Notes</th>
-                <th>Picture</th>
-              </tr>
-            </thead>
-            <tbody>
-              {backendData && backendData.length > 0 ? (
-                backendData.map((run, index) => (
-                  <tr key={run.id || index}>
-                    <td>{run.date}</td>
-                    <td>{run.trainingType}</td>
-                    <td>{run.runType}</td>
-                    <td>{run.distance}</td>
-                    <td>{run.duration}</td>
-                    <td>{run.pace}</td>
-                    <td>{run.effort}</td>
-                    <td>{run.notes}</td>
-                    <td>
-                    <Link to={`/training/${run.id}`}>View Details</Link> {/* Create a link to the TrainingDetails page */}
-                      <img
-                        src={run.picture}
-                        alt="Run"
-                        width="100"
-                        height="50"
-                      />
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9">No training data available.</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          {backendData && backendData.length > 0 ? (
+            <div className="training-cards-container">
+              {backendData.map((run) => (
+                <TrainingCard key={run.id} run={run} />
+              ))}
+            </div>
+          ) : (
+            <p>No training data available.</p>
+          )}
         </div>
       )}
     </div>
