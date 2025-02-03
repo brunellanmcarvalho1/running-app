@@ -75,6 +75,43 @@ const AddRunningPage = () => {
     <div className="add-running-container">
       <h2>Add a New Running Session</h2>
       <form onSubmit={handleSubmit}>
+      <div>
+          <label>Date:</label>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Run Status:</label>
+          <div className="status-container">
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="completed"
+                checked={isDone === true}
+                onChange={() => setIsDone(true)}
+              />
+              Completed
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="scheduled"
+                checked={isDone === false}
+                onChange={() => setIsDone(false)}
+              />
+              Scheduling
+              <span className="checkmark"></span>
+            </label>
+          </div>
+        </div>
         <div>
           <label>Type of Training:</label>
           <select
@@ -105,16 +142,7 @@ const AddRunningPage = () => {
           </select>
         </div>
 
-        <div>
-          <label>Date:</label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-
+       
         <div>
           <label>Distance (in km):</label>
           <input
@@ -148,45 +176,7 @@ const AddRunningPage = () => {
         </div>
 
         <div>
-          <label>Notes (Optional):</label>
-          <textarea
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder="How did you feel?"
-          />
-        </div>
-
-        <div>
-          <label>Run Status:</label>
-          <div className="status-container">
-            <label className="custom-checkbox">
-              <input
-                type="radio"
-                name="runStatus"
-                value="completed"
-                checked={isDone === true}
-                onChange={() => setIsDone(true)}
-              />
-              Completed
-              <span className="checkmark"></span>
-            </label>
-
-            <label className="custom-checkbox">
-              <input
-                type="radio"
-                name="runStatus"
-                value="scheduled"
-                checked={isDone === false}
-                onChange={() => setIsDone(false)}
-              />
-              Scheduled
-              <span className="checkmark"></span>
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <label>Perceived Effort (1 to 5):</label>
+          <label>Perceived Effort if completed (1 to 5):</label>
           <select
             value={effort}
             onChange={(e) => setEffort(e.target.value)}
@@ -213,6 +203,19 @@ const AddRunningPage = () => {
             </option>
           </select>
         </div>
+
+        <div>
+          <label>Notes (Optional):</label>
+          <textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="How did you feel?"
+          />
+        </div>
+
+        
+
+       
 
         {/* <div>
           <label>Upload a Picture (Optional):</label>
