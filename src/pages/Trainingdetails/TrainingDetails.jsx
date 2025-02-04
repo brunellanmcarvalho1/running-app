@@ -55,7 +55,7 @@ const TrainingDetails = () => {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    // Reset editedTraining to original values
+  
     setEditedTraining({ 
       trainingType: training.trainingType, 
       runType: training.runType, 
@@ -119,6 +119,16 @@ const TrainingDetails = () => {
       {isEditing ? (
         <div>
           <form onSubmit={handleSaveEdit}> 
+          <label>
+              Date:
+              <input 
+                type="date" 
+                value={editedTraining.date} 
+                onChange={handleInputChange} 
+                name="date" 
+                required
+              />
+            </label>
             <label>
               Training Type:
               <select 
@@ -148,16 +158,6 @@ const TrainingDetails = () => {
                 <option value="trackRun">Track Run</option> 
                 <option value="treadmillRun">Treadmill Run</option> 
               </select>
-            </label>
-            <label>
-              Date:
-              <input 
-                type="date" 
-                value={editedTraining.date} 
-                onChange={handleInputChange} 
-                name="date" 
-                required
-              />
             </label>
             <label>
               Distance (km):
@@ -190,14 +190,6 @@ const TrainingDetails = () => {
               />
             </label>
             <label>
-              Notes:
-              <textarea 
-                value={editedTraining.notes} 
-                onChange={handleInputChange} 
-                name="notes" 
-              />
-            </label>
-            <label>
               Effort:
               <select 
                 value={editedTraining.effort} 
@@ -215,6 +207,15 @@ const TrainingDetails = () => {
                 <option value="5">5. Very intense – At your limit, very hard to maintain.</option>
               </select>
             </label>
+            <label>
+              Notes:
+              <textarea 
+                value={editedTraining.notes} 
+                onChange={handleInputChange} 
+                name="notes" 
+              />
+            </label>
+           
             <button onClick={handleSaveEdit}>Save</button>
           </form>
           <button onClick={handleCancelEdit}>Cancel</button> 
@@ -222,7 +223,8 @@ const TrainingDetails = () => {
       ) : (
         <div>
           <p><strong>Date:</strong> {training.date}</p>
-          <p><strong>Type:</strong> {training.trainingType} - {training.runType}</p>
+          <p><strong>Type of training:</strong> {training.trainingType}</p>
+          <p><strong>Type of run:</strong> {training.runType}</p>
           <p><strong>Distance:</strong> {training.distance} km</p>
           <p><strong>Duration:</strong> {training.duration} min</p>
           <p><strong>Pace:</strong> {training.pace}</p>

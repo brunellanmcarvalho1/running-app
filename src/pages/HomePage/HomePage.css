@@ -1,3 +1,4 @@
+/* pages/HomePage.css */
 .home-container {
   text-align: center;
   margin-top: 50px;
@@ -13,4 +14,12 @@
 .home-container p {
   font-size: 1.2rem;
   color: #5be0e6;
+}
+
+.training-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
 }

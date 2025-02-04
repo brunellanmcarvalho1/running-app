@@ -28,15 +28,6 @@
     padding: 0;
     display: flex;
   }
-  
-  .navbar-links li {
-    margin-left: 20px;
-  }
-  
-  .navbar-links a {
-    color: white;
-    text-decoration: none;
-  }
 
   .logo-image {
     width: 50px; 
