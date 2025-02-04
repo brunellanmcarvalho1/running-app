@@ -1,4 +1,8 @@
 import { useState } from "react";
+import streetRunImage from "../../assets/street-run.jpg";
+import trailRunImage from "../../assets/trail-run.jpg";
+import trackRunImage from "../../assets/track-run.jpg";
+import treadmillRunImage from "../../assets/treadmill-run.jpg";
 import "./AddRunningPage.css";
 
 const AddRunningPage = () => {
@@ -11,6 +15,14 @@ const AddRunningPage = () => {
   const [notes, setNotes] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [effort, setEffort] = useState("");
+
+  // Mapping between the run type and the corresponding image
+  const runTypeImages = {
+    streetRun: streetRunImage,
+    trailRun: trailRunImage,
+    trackRun: trackRunImage,
+    treadmillRun: treadmillRunImage,
+  };
 
   // Async function to handle form submission
   const handleSubmit = async (e) => {
@@ -26,23 +38,7 @@ const AddRunningPage = () => {
       notes,
       isDone,
       effort,
-      //
     };
-
-    // const data = new FormData();
-    // // Adiciona os dados do formulário ao FormData
-    // for (const [key, value] of Object.entries(formData)) {
-    //   data.append(key, value);
-    // }
-
-    // // If there is an image, attach it to the FormData
-    // if (picture) {
-    //   const fileInput = document.querySelector('input[type="file"]');
-    //   const file = fileInput.files[0];
-    //   if (file) {
-    //     data.append("picture", file);
-    //   }
-    // }
 
     try {
       // Sends data to the backend
@@ -104,6 +100,17 @@ const AddRunningPage = () => {
             <option value="treadmillRun">Treadmill Run</option>
           </select>
         </div>
+
+        {/* Renders the image corresponding to the selected raun type*/}
+        {runType && (
+          <div>
+            <img
+              src={runTypeImages[runType]}
+              alt={`${runType} image`}
+              style={{ width: "200px" }}
+            />
+          </div>
+        )}
 
         <div>
           <label>Date:</label>
@@ -213,12 +220,6 @@ const AddRunningPage = () => {
             </option>
           </select>
         </div>
-
-        {/* <div>
-          <label>Upload a Picture (Optional):</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-          {picture && <img src={picture} alt="Preview" />}
-        </div> */}
 
         <div>
           <button type="submit">Save Run</button>
