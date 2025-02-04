@@ -1,0 +1,179 @@
+
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
+  const [formData, setFormData] = useState(initialData);
+  const [isDone, setIsDone] = useState(initialData.isDone || false); 
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit({ ...formData, isDone }); 
+  };
+
+  return (
+    <div className="training-form">
+      <h2>{isEditing ? "Edit Training Session" : "Add a New Running Session"}</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Date:</label>
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Run Status:</label>
+          <div className="status-container">
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="completed"
+                checked={isDone === true}
+                onChange={() => setIsDone(true)}
+              />
+              Completed
+              <span className="checkmark"></span>
+            </label>
+            <label className="custom-checkbox">
+              <input
+                type="radio"
+                name="runStatus"
+                value="scheduled"
+                checked={isDone === false}
+                onChange={() => setIsDone(false)}
+              />
+              Scheduled
+              <span className="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Training Type:</label>
+          <select
+            name="trainingType"
+            value={formData.trainingType}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select a training type</option>
+            <option value="longRun">Long Run</option>
+            <option value="intervalRun">Interval Run</option>
+            <option value="recoveryRun">Recovery Run</option>
+            <option value="tempoRun">Tempo Run</option>
+          </select>
+        </div>
+        <div>
+          <label>Run Type:</label>
+          <select
+            name="runType"
+            value={formData.runType}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select a run type</option>
+            <option value="streetRun">Street Run</option>
+            <option value="trailRun">Trail Run</option>
+            <option value="trackRun">Track Run</option>
+            <option value="treadmillRun">Treadmill Run</option>
+          </select>
+        </div>
+        <div>
+          <label>Distance (km):</label>
+          <input
+            type="number"
+            name="distance"
+            value={formData.distance}
+            onChange={handleInputChange}
+            step="0.01"
+            required
+          />
+        </div>
+        <div>
+          <label>Duration (min):</label>
+          <input
+            type="number"
+            name="duration"
+            value={formData.duration}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Pace (min/km):</label>
+          <input
+            type="text"
+            name="pace"
+            value={formData.pace}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Effort:</label>
+          <select
+            name="effort"
+            value={formData.effort}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select Effort Level</option>
+            <option value="1">1. Very light – Almost no effort, you feel comfortable.</option>
+            <option value="2">2. Light – A smooth effort, like a light jog.</option>
+            <option value="3">3. Moderate – Medium intensity effort, you feel your body working but can still keep up the pace.</option>
+            <option value="4">4. Intense – Strong effort, you’re challenged but can still continue.</option>
+            <option value="5">5. Very intense – At your limit, very hard to maintain.</option>
+          </select>
+        </div>
+        <div>
+          <label>Notes:</label>
+          <textarea
+            name="notes"
+            value={formData.notes}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <button type="submit">{isEditing ? "Save Changes" : "Save Run"}</button>
+          {isEditing && (
+            <button type="button" onClick={onCancel}>
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
+  );
+};
+
+TrainingForm.propTypes = {
+  initialData: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    trainingType: PropTypes.string.isRequired,
+    runType: PropTypes.string.isRequired,
+    distance: PropTypes.number.isRequired,
+    duration: PropTypes.number.isRequired,
+    pace: PropTypes.string,
+    effort: PropTypes.string.isRequired,
+    notes: PropTypes.string,
+    isDone: PropTypes.bool, 
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
+  isEditing: PropTypes.bool,
+};
+
+TrainingForm.defaultProps = {
+  isEditing: false,
+  onCancel: () => {},
+};
+
+export default TrainingForm;
