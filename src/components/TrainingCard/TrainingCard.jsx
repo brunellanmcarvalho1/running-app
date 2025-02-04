@@ -1,14 +1,27 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import './TrainigCard.css'
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import "./TrainigCard.css";
+
+const formatDate = (dateString) => {
+  const [year, month, day] = dateString.split("-");
+  return `${day}-${month}-${year}`;
+};
+
+const formatType = (type) => {
+  return type.replace(/([a-z])([A-Z])/g, "$1 $2");
+};
 
 const TrainingCard = ({ run }) => {
   return (
     <Link to={`/training/${run.id}`} className="training-card-link">
       <div className="training-card">
-        <h3>{run.date}</h3>
-        <p><strong>Training Type:</strong> {run.trainingType}</p>
-        <p><strong>Run Type:</strong> {run.runType}</p>
+        <h3>{formatDate(run.date)}</h3>
+        <p>
+          <strong>{formatType(run.runType)}</strong>
+        </p>
+        <p>
+          <strong>{formatType(run.trainingType)}</strong>
+        </p>
         {/* {run.picture && (
           <img
             src={run.picture}

@@ -71,7 +71,7 @@ const AddRunningPage = () => {
     <div className="add-running-container">
       <h2>Add a New Running Session</h2>
       <form onSubmit={handleSubmit}>
-      <div>
+        <div>
           <label>Date:</label>
           <input
             type="date"
@@ -199,6 +199,14 @@ const AddRunningPage = () => {
           </select>
         </div>
 
+        <div>
+          <label>Notes (Optional):</label>
+          <textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="How did you feel?"
+          />
+        </div>
 
         <div>
           <button type="submit">Save Run</button>
