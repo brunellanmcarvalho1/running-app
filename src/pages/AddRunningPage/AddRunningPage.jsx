@@ -1,4 +1,3 @@
-
 import TrainingForm from "../../components/TrainingForm/TrainingForm";
 import "./AddRunningPage.css";
 
