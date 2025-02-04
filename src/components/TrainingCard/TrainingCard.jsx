@@ -22,13 +22,6 @@ const TrainingCard = ({ run }) => {
         <p>
           <strong>{formatType(run.trainingType)}</strong>
         </p>
-        {/* {run.picture && (
-          <img
-            src={run.picture}
-            alt="Run"
-            className="training-card-image"
-          />
-        )} */}
       </div>
     </Link>
   );
