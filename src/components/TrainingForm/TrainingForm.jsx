@@ -1,10 +1,31 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
+const TrainingForm = ({
+  initialData = {
+    date: "",
+    trainingType: "",
+    runType: "",
+    distance: 0,
+    duration: 0,
+    pace: "",
+    effort: "",
+    notes: "",
+    isDone: false,
+  },
+  onSubmit,
+  onCancel = () => {},
+  isEditing = false,
+}) => {
   const [formData, setFormData] = useState(initialData);
-  const [isDone, setIsDone] = useState(initialData.isDone || false); 
+  const [isDone, setIsDone] = useState(initialData.isDone || false);
+  const [runTypeImage, setRunTypeImage] = useState("");
+
+  useEffect(() => {
+    if (formData.runType) {
+      setRunTypeImage(`/src/assets/${formData.runType}.jpg`);
+    }
+  }, [formData.runType]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -13,12 +34,14 @@ const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...formData, isDone }); 
+    onSubmit({ ...formData, isDone, runTypeImage });
   };
 
   return (
     <div className="training-form">
-      <h2>{isEditing ? "Edit Training Session" : "Add a New Running Session"}</h2>
+      <h2>
+        {isEditing ? "Edit Training Session" : "Add a New Running Session"}
+      </h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Date:</label>
@@ -35,21 +58,19 @@ const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
           <div className="status-container">
             <label className="custom-checkbox">
               <input
-                type="radio"
-                name="runStatus"
-                value="completed"
-                checked={isDone === true}
-                onChange={() => setIsDone(true)}
+                type="checkbox"
+                name="isDone"
+                checked={isDone}
+                onChange={() => setIsDone(!isDone)}
               />
-              Completed
               <span className="checkmark"></span>
             </label>
+            Completed
             <label className="custom-checkbox">
               <input
-                type="radio"
-                name="runStatus"
-                value="scheduled"
-                checked={isDone === false}
+                type="checkbox"
+                name="isDone"
+                checked={!isDone}
                 onChange={() => setIsDone(false)}
               />
               Scheduled
@@ -109,7 +130,7 @@ const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
           />
         </div>
         <div>
-          <label>Pace (min/km):</label>
+          <label>Pace:</label>
           <input
             type="text"
             name="pace"
@@ -126,11 +147,23 @@ const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
             required
           >
             <option value="">Select Effort Level</option>
-            <option value="1">1. Very light – Almost no effort, you feel comfortable.</option>
-            <option value="2">2. Light – A smooth effort, like a light jog.</option>
-            <option value="3">3. Moderate – Medium intensity effort, you feel your body working but can still keep up the pace.</option>
-            <option value="4">4. Intense – Strong effort, you’re challenged but can still continue.</option>
-            <option value="5">5. Very intense – At your limit, very hard to maintain.</option>
+            <option value="1">
+              1. Very light – Almost no effort, you feel comfortable.
+            </option>
+            <option value="2">
+              2. Light – A smooth effort, like a light jog.
+            </option>
+            <option value="3">
+              3. Moderate – Medium intensity effort, you feel your body working
+              but can still keep up the pace.
+            </option>
+            <option value="4">
+              4. Intense – Strong effort, you’re challenged but can still
+              continue.
+            </option>
+            <option value="5">
+              5. Very intense – At your limit, very hard to maintain.
+            </option>
           </select>
         </div>
         <div>
@@ -141,14 +174,10 @@ const TrainingForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <button type="submit">{isEditing ? "Save Changes" : "Save Run"}</button>
-          {isEditing && (
-            <button type="button" onClick={onCancel}>
-              Cancel
-            </button>
-          )}
-        </div>
+        <button type="submit">Save</button>
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
       </form>
     </div>
   );
@@ -164,16 +193,11 @@ TrainingForm.propTypes = {
     pace: PropTypes.string,
     effort: PropTypes.string.isRequired,
     notes: PropTypes.string,
-    isDone: PropTypes.bool, 
+    isDone: PropTypes.bool,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   isEditing: PropTypes.bool,
-};
-
-TrainingForm.defaultProps = {
-  isEditing: false,
-  onCancel: () => {},
 };
 
 export default TrainingForm;
