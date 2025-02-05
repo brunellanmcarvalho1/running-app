@@ -15,6 +15,13 @@ const TrainingCard = ({ run }) => {
   return (
     <Link to={`/training/${run.id}`} className="training-card-link">
       <div className="training-card">
+        {run.runTypeImage && (
+          <img
+            src={run.runTypeImage}
+            alt={formatType(run.runType)}
+            className="training-card-image"
+          />
+        )}
         <h3>{formatDate(run.date)}</h3>
         <p>
           <strong>{formatType(run.runType)}</strong>
@@ -33,7 +40,7 @@ TrainingCard.propTypes = {
     date: PropTypes.string.isRequired,
     trainingType: PropTypes.string.isRequired,
     runType: PropTypes.string.isRequired,
-    picture: PropTypes.string,
+    runTypeImage: PropTypes.string,
   }).isRequired,
 };
 
