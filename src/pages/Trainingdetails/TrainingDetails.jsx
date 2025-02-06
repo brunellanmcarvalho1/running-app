@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -83,16 +82,34 @@ const TrainingDetails = () => {
         />
       ) : (
         <div>
-          <p><strong>Date:</strong> {training.date}</p>
-          <p><strong>Status:</strong> {training.isDone ? "Completed" : "Scheduled"}</p>
-          <p><strong>Type of training:</strong> {training.trainingType}</p>
-          <p><strong>Type of run:</strong> {training.runType}</p>
-          <p><strong>Distance:</strong> {training.distance} km</p>
-          <p><strong>Duration:</strong> {training.duration} min</p>
-          <p><strong>Pace:</strong> {training.pace}</p>
-          <p><strong>Effort:</strong> {training.effort}</p>
-          <p><strong>Notes:</strong> {training.notes}</p>
-          {training.picture && <img src={training.picture} alt="Run" />}
+          <p>
+            <strong>Date:</strong> {training.date}
+          </p>
+          <p>
+            <strong>Status:</strong>{" "}
+            {training.isDone ? "Completed" : "Scheduled"}
+          </p>
+          <p>
+            <strong>Type of training:</strong> {training.trainingType}
+          </p>
+          <p>
+            <strong>Type of run:</strong> {training.runType}
+          </p>
+          <p>
+            <strong>Distance:</strong> {training.distance} km
+          </p>
+          <p>
+            <strong>Duration:</strong> {training.duration} min
+          </p>
+          <p>
+            <strong>Pace:</strong> {training.pace}
+          </p>
+          <p>
+            <strong>Effort:</strong> {training.effort}
+          </p>
+          <p>
+            <strong>Notes:</strong> {training.notes}
+          </p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={handleDelete}>Delete</button>
         </div>
