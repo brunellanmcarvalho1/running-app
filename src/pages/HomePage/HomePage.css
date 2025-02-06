@@ -1,25 +1,53 @@
-
 .home-container {
   text-align: center;
   margin-top: 50px;
   font-family: Arial, sans-serif;
 }
 
-.home-container h1 {
-  font-size: 2.5rem;
-  color: #ffbe59;
-  padding-top: 50px;
-}
-
-.home-container p {
-  font-size: 1.2rem;
-  color: #5be0e6;
-}
-
-.training-cards-container {
+.header {
+  margin-bottom: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 16px;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.home-container .logo {
+  width: 250px; 
+  height: auto;
+  max-width: 100%; 
+  margin-bottom: 10px;
+}
+
+.profile-section {
+  margin-top: 30px; 
+}
+
+.profile-picture-placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px; 
+}
+
+.profile-section p {
+  margin-bottom: 20px; 
+}
+
+.training-log-button {
+  background-color: #ffbe59;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.training-log-button:hover {
+  background-color: #f927ac;
 }
