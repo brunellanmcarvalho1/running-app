@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./HomePage.css";
 import axios from "axios";
-import Logo from "../../assets/logo.png";
+import TrainingCard from "../../components/TrainingCard/TrainingCard";
+import "./TrainingLogPage.css";
 
-const HomePage = () => {
+const TrainingLogPage = () => {
   const [backendData, setBackendData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,27 +28,33 @@ const HomePage = () => {
 
   if (loading) {
     return (
-      <div className="home-container">
+      <div className="training-log-container">
         <h1>Loading...</h1>
       </div>
     );
   }
 
   return (
-    <div className="home-container">
-      <div className="header">
-        <img src={Logo} alt="Logo" className="logo" />
-        <h1>Welcome!</h1>
-      </div>
-      <div className="profile-section">
-        <div className="profile-picture-placeholder"></div>
-        <p>Total Kilometers Run: 0 km</p>
-        <Link to="/training-log" className="training-log-button">
-          Go to Training Log
-        </Link>
-      </div>
+    <div className="training-log-container">
+      <h1>Training Log</h1>
+      <p>Your past and future training sessions.</p>
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        <div>
+          {backendData && backendData.length > 0 ? (
+            <div className="training-cards-container">
+              {backendData.map((run) => (
+                <TrainingCard key={run.id} run={run} />
+              ))}
+            </div>
+          ) : (
+            <p>No training data available.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
-export default HomePage;
+export default TrainingLogPage;
