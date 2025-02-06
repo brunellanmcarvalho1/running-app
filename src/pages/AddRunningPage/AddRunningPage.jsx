@@ -21,6 +21,7 @@ const AddRunningPage = () => {
       console.error("Error saving training", error);
     }
   };
+
   return (
     <div className="add-running-container">
       <TrainingForm
@@ -40,4 +41,5 @@ const AddRunningPage = () => {
     </div>
   );
 };
+
 export default AddRunningPage;
