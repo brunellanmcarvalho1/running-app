@@ -27,6 +27,13 @@ const TrainingForm = ({
     }
   }, [formData.runType]);
 
+  useEffect(() => {
+    if (formData.distance > 0 && formData.duration > 0) {
+      const pace = (formData.duration / formData.distance).toFixed(2);
+      setFormData((prevData) => ({ ...prevData, pace }));
+    }
+  }, [formData.distance, formData.duration]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
