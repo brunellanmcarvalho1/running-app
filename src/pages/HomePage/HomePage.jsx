@@ -36,14 +36,14 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <h1>Welcome to Run.Ella, your running tracker!</h1>
-      <p>Here, you'll see all your past and future training sessions.</p>
+      <h1>Training Log</h1>
+      <p>Your past and future training sessions.</p>
 
       {error ? (
         <p>{error}</p>
       ) : (
         <div>
-          <h2>Training Log</h2>
+          <h2></h2>
           {backendData && backendData.length > 0 ? (
             <div className="training-cards-container">
               {backendData.map((run) => (

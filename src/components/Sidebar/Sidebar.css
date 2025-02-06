@@ -1,17 +1,16 @@
 .sidebar {
-  width: 250px;
+  width: 4rem; /* Initially collapsed */
   position: fixed;
   left: 0;
-  top: 0;
+  top: 4rem; /* Add space for navbar */
   height: 100%;
-  background-color: #2c3e50;
+  background-color: #333;
   color: white;
-  padding: 20px;
-  box-sizing: border-box;
-  display: block; 
-  @media (max-width: 768px) { 
-    display: none; 
-  }
+  transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+  width: 16rem; /* Expanded width on hover */
 }
 
 .sidebar ul {
@@ -29,6 +28,6 @@
 }
 
 .sidebar a:hover {
-  background-color: #3498db;
+  background-color: #ffbe59;
   padding-left: 10px;
 }

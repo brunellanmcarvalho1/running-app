@@ -1,14 +1,21 @@
 import './About.css';
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/logo.png';
 
 const About = () => {
   return (
     <div className="about-container">
-      <h2>About</h2><img src={Logo} alt="Running Tracker Logo"className="logo-image2"/> 
+      <h2>About</h2>
+      
+      {/* Centering the logo */}
+      <div className="flex justify-center">
+        <img src={Logo} alt="Running Tracker Logo" className="logo-image2" />
+      </div>
+
       <p> 
-      This application was created to help Brunella and other runners achieve their running goals. 
+        This application was created to help Brunella and other runners achieve their running goals. 
         We believe in the power of running to improve physical and mental well-being and hope this app can be a valuable tool for everyone.  
       </p>
+
       <div className="team-members">
         <div className="team-member">
           <img src="https://media.licdn.com/dms/image/v2/D4D03AQG9815cCiJCHw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1670249089945?e=1743638400&v=beta&t=8vnsbavuoQRnTVMSLiIQv4XwINh47Ijvuxy0LxU9RIc" alt="Brunella Carvalho" /> 

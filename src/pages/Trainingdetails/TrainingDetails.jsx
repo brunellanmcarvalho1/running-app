@@ -72,7 +72,7 @@ const TrainingDetails = () => {
   }
 
   return (
-    <div className="training-details">
+    <div className="training-details mt-16"> {/* Add margin-top here */}
       <h2>Training Details</h2>
       {isEditing ? (
         <TrainingForm

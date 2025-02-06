@@ -10,22 +10,25 @@ import TrainingDetails from "./pages/Trainingdetails/TrainingDetails";
 import "./App.css";
 
 function App() {
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
+
   return (
     <Router>
-      <div className="app-container">
-        <Navbar />
-        <div className="main-content">
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/add-running" element={<AddRunningPage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/training/:trainingId" element={<TrainingDetails />} />
-          </Routes>
+      <div className="flex min-h-screen">
+        <Sidebar isExpanded={isSidebarExpanded} toggleSidebar={() => setIsSidebarExpanded(!isSidebarExpanded)} />
+        <div className={`flex-1 transition-all duration-300 ${isSidebarExpanded ? "ml-64" : "ml-16"}`}>
+          <Navbar />
+          <div className="p-4">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/add-running" element={<AddRunningPage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/training/:trainingId" element={<TrainingDetails />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-      <></>
     </Router>
   );
 }

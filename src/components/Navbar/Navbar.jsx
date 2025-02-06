@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
-import './Navbar.css'; 
-import Logo from '../../assets/logo.png'
-
+import Logo from "../../assets/logo.png";
+import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav className="navbar">
-     <div className="navbar-content">
+      <div className="navbar-content">
+      
         <Link to="/" className="navbar-brand">
-          <img src={Logo} alt="Running Tracker Logo"className="logo-image"/> 
+          <img src={Logo} alt="Logo" className="logo-image" />
         </Link>
-        <ul className="navbar-links">
 
-        </ul>
+        
+        <h1 className="slogan">Faster and further!</h1>
+
+       
+        <Link to="/signin" className="sign-in-btn">
+          Sign In
+        </Link>
       </div>
     </nav>
   );
