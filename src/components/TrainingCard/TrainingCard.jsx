@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Pencil, Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const formatDate = (dateString) => {
   const [year, month, day] = dateString.split("-");
@@ -12,6 +13,7 @@ const formatType = (type) => {
 
 const TrainingCard = ({ run, onEdit, onDelete }) => {
   return (
+    <Link to={`/training/${run.id}`} className="training-card-link">
     <div className="relative bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-200 transition-all mb-8">
       {run.runTypeImage && (
         <img
@@ -42,6 +44,7 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
         </button>
       </div>
     </div>
+    </Link>
   );
 };
 
