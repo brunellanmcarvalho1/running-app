@@ -59,7 +59,6 @@ const CalendarPage = () => {
 
   return (
     <div className="calendar-page">
-      <h1>Training Calendar</h1>
       <Calendar
         onChange={setValue}
         value={value}
