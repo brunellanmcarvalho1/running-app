@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import TrainingForm from "../../components/TrainingForm/TrainingForm";
-// import "./TrainingDetails.css";
 
 const TrainingDetails = () => {
   const { trainingId } = useParams();
@@ -21,7 +20,6 @@ const TrainingDetails = () => {
         setTraining(response.data);
       } catch (err) {
         setError(`Error fetching training: ${err.message}`);
-        console.error("Error fetching training:", err);
       } finally {
         setIsLoading(false);
       }
@@ -29,6 +27,15 @@ const TrainingDetails = () => {
 
     fetchTraining();
   }, [trainingId]);
+
+  const effortDescriptions = {
+    "1": "1. Very light – Almost no effort, you feel comfortable.",
+    "2": "2. Light – A smooth effort, like a light jog.",
+    "3": "3. Moderate – Medium intensity effort, you feel your body working but can still keep up the pace.",
+    "4": "4. Intense – Strong effort, you’re challenged but can still continue.",
+    "5": "5. Very intense – At your limit, very hard to maintain."
+  };
+
 
   const handleSaveEdit = async (formData) => {
     try {
@@ -39,7 +46,6 @@ const TrainingDetails = () => {
       setTraining(response.data);
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating training:", error);
       setError("Error updating training. Please try again.");
     }
   };
@@ -49,30 +55,20 @@ const TrainingDetails = () => {
       await axios.delete(
         `https://running-app-backend-zuaf.onrender.com/trainings/${trainingId}`
       );
-      setTraining(null);
       alert("Training deleted successfully!");
       navigate("/");
     } catch (error) {
-      console.error("Error deleting training:", error);
       setError("Failed to delete training. Please try again later.");
     }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!training) {
-    return <div>Training not found.</div>;
-  }
+  if (isLoading) return <div className="text-center mt-20 text-white">Loading...</div>;
+  if (error) return <div className="text-center mt-20 text-red-500">Error: {error}</div>;
+  if (!training) return <div className="text-center mt-20 text-white">Training not found.</div>;
 
   return (
-    <div className="training-details mt-16"> {/* Add margin-top here */}
-      <h2>Training Details</h2>
+    <div className="max-w-5xl mx-auto mt-20 p-8 bg-gray-100 text-gray-900 rounded-lg shadow-lg"> 
+      <h2 className="text-3xl font-bold text-center mb-6 text-pink-500">Training Details</h2>
       {isEditing ? (
         <TrainingForm
           initialData={training}
@@ -81,37 +77,30 @@ const TrainingDetails = () => {
           isEditing={true}
         />
       ) : (
-        <div>
-          <p>
-            <strong>Date:</strong> {training.date}
-          </p>
-          <p>
-            <strong>Status:</strong>{" "}
-            {training.isDone ? "Completed" : "Scheduled"}
-          </p>
-          <p>
-            <strong>Type of training:</strong> {training.trainingType}
-          </p>
-          <p>
-            <strong>Type of run:</strong> {training.runType}
-          </p>
-          <p>
-            <strong>Distance:</strong> {training.distance} km
-          </p>
-          <p>
-            <strong>Duration:</strong> {training.duration} min
-          </p>
-          <p>
-            <strong>Pace:</strong> {training.pace}
-          </p>
-          <p>
-            <strong>Effort:</strong> {training.effort}
-          </p>
-          <p>
-            <strong>Notes:</strong> {training.notes}
-          </p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+        <div className="space-y-4 text-left">
+          <p><strong>Date:</strong> {training.date}</p>
+          <p><strong>Status:</strong> {training.isDone ? "Completed" : "Scheduled"}</p>
+          <p><strong>Type of training:</strong> {training.trainingType}</p>
+          <p><strong>Type of run:</strong> {training.runType}</p>
+          <p><strong>Distance:</strong> {training.distance} km</p>
+          <p><strong>Duration:</strong> {training.duration} min</p>
+          <p><strong>Pace:</strong> {training.pace}</p>
+          <p><strong>Effort:</strong> {effortDescriptions[training.effort] || "Not specified"}</p>
+          <p><strong>Notes:</strong> {training.notes}</p>
+          <div className="flex justify-between mt-6">
+            <button 
+              onClick={() => setIsEditing(true)} 
+              className="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg shadow-md transition"
+            >
+              Edit
+            </button>
+            <button 
+              onClick={handleDelete} 
+              className="px-4  py-2 hover:bg-pink-600 text-white font-semibold rounded-lg shadow-md transition"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       )}
     </div>
