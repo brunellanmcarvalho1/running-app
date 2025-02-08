@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-16 h-full bg-[#333] text-white transition-all duration-300 ${
+      className={`fixed left-0 top-16 h-full bg-[#333] text-white transition-all duration-300 z-50 ${
         isExpanded ? "w-64" : "w-16"
       }`}
       onMouseEnter={() => setIsExpanded(true)}
@@ -20,8 +20,8 @@ const Sidebar = () => {
             to="/"
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
-            <FaHome className="text-xl" />
-            {isExpanded && <span className="ml-2">Home</span>}
+            <FaHome className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">Home</span>}
           </Link>
         </li>
         <li>
@@ -29,18 +29,17 @@ const Sidebar = () => {
             to="/add-running"
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
-            <FaPlus className="text-xl" />
-            {isExpanded && <span className="ml-2">Add Running</span>}
+            <FaPlus className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">Add Running</span>}
           </Link>
         </li>
-
         <li>
           <Link
             to="/training-log"
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
-            <FaRunning className="text-xl" />
-            {isExpanded && <span className="ml-2">Training Log</span>}
+            <FaRunning className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">Training Log</span>}
           </Link>
         </li>
         <li>

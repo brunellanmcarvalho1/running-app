@@ -68,40 +68,43 @@ const TrainingForm = ({
   };
 
   return (
-    <div className="training-form">
-      <h2>
+    <div className="p-8 bg-white text-black">
+      <h2 className="text-2xl font-bold text-center mb-6">
         {isEditing ? "Edit Training Session" : "Add a New Running Session"}
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label>Date:</label>
+          <label className="block mb-1">Date:</label>
           <input
             type="date"
             name="date"
             value={formData.date}
             onChange={handleInputChange}
             required
+            className="w-full p-2 rounded border border-gray-300"
           />
         </div>
         <div>
-          <label>Run Status:</label>
-          <div className="status-container">
-            <label className="custom-checkbox">
+          <label className="block mb-1">Run Status:</label>
+          <div className="flex gap-4">
+            <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 name="isDone"
                 checked={isDone}
                 onChange={() => setIsDone(!isDone)}
+                className="w-5 h-5"
               />
               <span className="checkmark"></span>
             </label>
             Completed
-            <label className="custom-checkbox">
+            <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 name="isDone"
                 checked={!isDone}
                 onChange={() => setIsDone(false)}
+                className="w-5 h-5"
               />
               Scheduled
               <span className="checkmark"></span>
@@ -109,12 +112,13 @@ const TrainingForm = ({
           </div>
         </div>
         <div>
-          <label>Training Type:</label>
+          <label className="block mb-1">Training Type:</label>
           <select
             name="trainingType"
             value={formData.trainingType}
             onChange={handleInputChange}
             required
+            
           >
             <option value="">Select a training type</option>
             <option value="longRun">Long Run</option>
@@ -124,7 +128,7 @@ const TrainingForm = ({
           </select>
         </div>
         <div>
-          <label>Run Type:</label>
+          <label className="block mb-1">Run Type:</label>
           <select
             name="runType"
             value={formData.runType}
@@ -139,7 +143,7 @@ const TrainingForm = ({
           </select>
         </div>
         <div>
-          <label>Distance (km):</label>
+          <label className="block mb-1">Distance (km):</label>
           <input
             type="number"
             name="distance"
@@ -150,7 +154,7 @@ const TrainingForm = ({
           />
         </div>
         <div>
-          <label>Duration (min):</label>
+          <label className="block mb-1">Duration (min):</label>
           <input
             type="number"
             name="duration"
@@ -160,7 +164,7 @@ const TrainingForm = ({
           />
         </div>
         <div>
-          <label>Pace:</label>
+          <label className="block mb-1">Pace (km/h):</label>
           <input
             type="text"
             name="pace"
@@ -169,7 +173,7 @@ const TrainingForm = ({
           />
         </div>
         <div>
-          <label>Effort:</label>
+          <label className="block mb-1">Effort:</label>
           <select
             name="effort"
             value={formData.effort}
@@ -197,7 +201,7 @@ const TrainingForm = ({
           </select>
         </div>
         <div>
-          <label>Notes:</label>
+          <label className="block mb-1">Notes:</label>
           <textarea
             name="notes"
             value={formData.notes}

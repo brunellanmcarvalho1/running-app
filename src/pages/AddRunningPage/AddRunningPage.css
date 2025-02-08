@@ -48,7 +48,7 @@ textarea {
 }
 
 button {
-  background-color: #ff7043;
+
   color: white;
   border: none;
   padding: 12px;
@@ -59,18 +59,18 @@ button {
 }
 
 button:hover {
-  background-color: #ff5722;
+  background-color: #f927ac;
 }
 
 input[type="checkbox"] {
   margin-top: 5px;
 }
 
-img {
+/* img {
   margin-top: 10px;
   border-radius: 4px;
   max-width: 100px;
-}
+} */
 
 input[type="file"] {
   padding: 5px;
