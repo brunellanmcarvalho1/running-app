@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import streetRunImage from "../../assets/streetRun.jpg";
+import trailRunImage from "../../assets/trailRun.jpg";
+import trackRunImage from "../../assets/trackRun.jpg";
+import treadmillRunImage from "../../assets/treadmillRun.jpg";
 
 const TrainingForm = ({
   initialData = {
@@ -21,12 +25,29 @@ const TrainingForm = ({
   const [isDone, setIsDone] = useState(initialData.isDone || false);
   const [runTypeImage, setRunTypeImage] = useState("");
 
+  // UseEffect to update the image according to the type of run
   useEffect(() => {
     if (formData.runType) {
-      setRunTypeImage(`/src/assets/${formData.runType}.jpg`);
+      switch (formData.runType) {
+        case "streetRun":
+          setRunTypeImage(streetRunImage);
+          break;
+        case "trailRun":
+          setRunTypeImage(trailRunImage);
+          break;
+        case "trackRun":
+          setRunTypeImage(trackRunImage);
+          break;
+        case "treadmillRun":
+          setRunTypeImage(treadmillRunImage);
+          break;
+        default:
+          setRunTypeImage("");
+      }
     }
   }, [formData.runType]);
 
+  // Calculation of pace according to duration and distance
   useEffect(() => {
     if (formData.distance > 0 && formData.duration > 0) {
       const pace = (formData.duration / formData.distance).toFixed(2);
@@ -34,11 +55,13 @@ const TrainingForm = ({
     }
   }, [formData.distance, formData.duration]);
 
+  // Function for handling changes to the form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Form submission function
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ ...formData, isDone, runTypeImage });
