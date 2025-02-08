@@ -11,6 +11,20 @@ const formatType = (type) => {
   return type.replace(/([a-z])([A-Z])/g, "$1 $2");
 };
 
+const typeLabels = {
+  longRun: "Long Run",
+  intervalRun: "Interval Run",
+  recoveryRun: "Recovery Run",
+  tempoRun: "tempoRun",
+  streetRun: "Street",
+  trailRun: "Trail",
+  trackRun: "Track",
+  treadmillRun: "Treadmill"
+};
+
+const getTypeLabel = (type) => typeLabels[type] || formatType(type);
+
+
 const TrainingCard = ({ run, onEdit, onDelete }) => {
   return (
     <Link to={`/training/${run.id}`} className="training-card-link">
@@ -19,12 +33,13 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
         <img
           src={run.runTypeImage}
           alt={formatType(run.runType)}
-          className="w-full max-w-xs mx-auto rounded-lg mb-4" 
+          className="w-full max-w-sm mx-auto rounded-lg mb-4" 
         />
       )}
       <h3 className="text-xl font-semibold mt-4 text-gray-900">{formatDate(run.date)}</h3>
-      <p className="text-gray-700 font-medium">{formatType(run.runType)}</p>
-      <p className="text-gray-700 font-medium">{formatType(run.trainingType)}</p>
+      <p className="text-gray-700 font-medium">{getTypeLabel(run.runType)}</p>
+<p className="text-gray-700 font-medium">{getTypeLabel(run.trainingType)}</p>
+
       <div className="flex justify-center space-x-4 mt-4"> 
        
         <button

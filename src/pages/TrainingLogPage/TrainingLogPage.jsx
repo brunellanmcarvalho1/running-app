@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TrainingCard from "../../components/TrainingCard/TrainingCard";
-import "./TrainingLogPage.css";
 
 const TrainingLogPage = () => {
   const [backendData, setBackendData] = useState(null);
@@ -28,28 +27,28 @@ const TrainingLogPage = () => {
 
   if (loading) {
     return (
-      <div className="training-log-container">
-        <h1>Loading...</h1>
+      <div className="pt-20 flex justify-center items-center min-h-screen">
+        <h1 className="text-2xl font-semibold">Loading...</h1>
       </div>
     );
   }
 
   return (
-    <div className="training-log-container">
-      <h1>Training Log</h1>
-      <p>Your past and future training sessions.</p>
+    <div className="pt-20 px-6">
+      <h1 className="text-3xl font-bold text-center">Training Log</h1>
+      <p className="text-center text-gray-600">Your past and future training sessions.</p>
       {error ? (
-        <p>{error}</p>
+        <p className="text-center text-red-500">{error}</p>
       ) : (
         <div>
           {backendData && backendData.length > 0 ? (
-            <div className="training-cards-container">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
               {backendData.map((run) => (
                 <TrainingCard key={run.id} run={run} />
               ))}
             </div>
           ) : (
-            <p>No training data available.</p>
+            <p className="text-center mt-4 text-gray-600">No training data available.</p>
           )}
         </div>
       )}
