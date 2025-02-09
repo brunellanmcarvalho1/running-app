@@ -30,6 +30,7 @@ const getRunTypeImage = (runType) => {
   }
 };
 
+
 const typeLabels = {
   longRun: "Long Run",
   intervalRun: "Interval Run",
@@ -45,6 +46,7 @@ const getTypeLabel = (type) => typeLabels[type] || formatType(type);
 const TrainingCard = ({ run, onEdit, onDelete }) => {
   const runTypeImage = getRunTypeImage(run.runType);
 
+
   return (
     <Link to={`/training/${run.id}`} className="training-card-link">
       <div className="relative bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-200 transition-all mb-8">
@@ -58,8 +60,10 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
         <h3 className="text-xl font-semibold mt-4 text-gray-900">
           {formatDate(run.date)}
         </h3>
+
         <p className="text-gray-700 font-medium">{getTypeLabel(run.runType)}</p>
 <p className="text-gray-700 font-medium">{getTypeLabel(run.trainingType)}</p>
+
         <div className="flex justify-center space-x-4 mt-4">
           <button
             onClick={() => onEdit(run)}
@@ -67,6 +71,7 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
           >
             <Pencil size={20} />
           </button>
+
           <button
             onClick={() => onDelete(run.id)}
             className="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg shadow-md transition flex items-center space-x-2"
