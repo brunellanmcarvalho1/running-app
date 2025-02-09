@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getRunTypeImage } from "../../components/TrainingCard";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./CalendarPage.css";
@@ -33,10 +34,11 @@ const CalendarPage = () => {
           new Date(training.date).toDateString() === date.toDateString()
       );
       if (training) {
+        const runTypeImage = getRunTypeImage(training.runType);
         return (
           <div className={`training ${training.isDone ? "done" : "scheduled"}`}>
             <img
-              src={training.runTypeImage}
+              src={runTypeImage}
               alt={training.runType}
               className="training-image"
             />
