@@ -1,8 +1,8 @@
 .sidebar {
-  width: 4rem; /* Initially collapsed */
+  width: 4rem; 
   position: fixed;
   left: 0;
-  top: 4rem; /* Add space for navbar */
+  top: 4rem; 
   height: 100%;
   background-color: #333;
   color: white;
@@ -10,7 +10,7 @@
 }
 
 .sidebar:hover {
-  width: 16rem; /* Expanded width on hover */
+  width: 16rem; 
 }
 
 .sidebar ul {

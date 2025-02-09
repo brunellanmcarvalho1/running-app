@@ -47,8 +47,8 @@ const Sidebar = () => {
             to="/calendar"
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
-            <FaRegCalendarAlt className="text-xl" />
-            {isExpanded && <span className="ml-2">Training Calendar</span>}
+            <FaRegCalendarAlt className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">Training Calendar</span>}
           </Link>
         </li>
       </ul>
