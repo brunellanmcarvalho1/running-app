@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaPlus, FaRunning, FaRegCalendarAlt } from "react-icons/fa";
+import { FaHome, FaPlus, FaRunning, FaRegCalendarAlt, FaInfoCircle } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const Sidebar = () => {
@@ -47,8 +47,17 @@ const Sidebar = () => {
             to="/calendar"
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
-            <FaRegCalendarAlt className="text-xl" />
-            {isExpanded && <span className="ml-2">Training Calendar</span>}
+            <FaRegCalendarAlt className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">Training Calendar</span>}
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/about"
+            className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
+          >
+            <FaInfoCircle className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">About Us</span>}
           </Link>
         </li>
       </ul>
