@@ -2,7 +2,7 @@ import "./HomePage.css"
 import Logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="home-container">
       <h2>Welcome to Running Tracker</h2>
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
