@@ -13,6 +13,10 @@ const TrainingLogPage = () => {
         const response = await axios.get(
           "https://running-app-backend-zuaf.onrender.com/trainings"
         );
+        // Sort the data received from the backend before storing it
+        const sortedData = response.data.sort(
+          (a, b) => new Date(a.date) - new Date(b.date)
+        );
         setBackendData(response.data);
       } catch (error) {
         setError("Failed to fetch data.");
@@ -36,7 +40,9 @@ const TrainingLogPage = () => {
   return (
     <div className="pt-20 px-6">
       <h1 className="text-3xl font-bold text-center">Training Log</h1>
-      <p className="text-center text-gray-600">Your past and future training sessions.</p>
+      <p className="text-center text-gray-600">
+        Your past and future training sessions.
+      </p>
       {error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : (
@@ -48,7 +54,9 @@ const TrainingLogPage = () => {
               ))}
             </div>
           ) : (
-            <p className="text-center mt-4 text-gray-600">No training data available.</p>
+            <p className="text-center mt-4 text-gray-600">
+              No training data available.
+            </p>
           )}
         </div>
       )}

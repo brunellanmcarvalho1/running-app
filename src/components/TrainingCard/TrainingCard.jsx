@@ -30,7 +30,6 @@ const getRunTypeImage = (runType) => {
   }
 };
 
-
 const typeLabels = {
   longRun: "Long Run",
   intervalRun: "Interval Run",
@@ -39,13 +38,12 @@ const typeLabels = {
   streetRun: "Street",
   trailRun: "Trail",
   trackRun: "Track",
-  treadmillRun: "Treadmill"
+  treadmillRun: "Treadmill",
 };
 const getTypeLabel = (type) => typeLabels[type] || formatType(type);
 
 const TrainingCard = ({ run, onEdit, onDelete }) => {
   const runTypeImage = getRunTypeImage(run.runType);
-
 
   return (
     <Link to={`/training/${run.id}`} className="training-card-link">
@@ -62,7 +60,9 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
         </h3>
 
         <p className="text-gray-700 font-medium">{getTypeLabel(run.runType)}</p>
-<p className="text-gray-700 font-medium">{getTypeLabel(run.trainingType)}</p>
+        <p className="text-gray-700 font-medium">
+          {getTypeLabel(run.trainingType)}
+        </p>
 
         <div className="flex justify-center space-x-4 mt-4">
           <button
