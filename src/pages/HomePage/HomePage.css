@@ -1,53 +1,50 @@
 .home-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  max-width: 1200px;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-sizing: border-box;
   text-align: center;
-  margin-top: 50px;
-  font-family: Arial, sans-serif;
 }
 
-.header {
+.home-container h2 {
+  font-size: 2.4rem;
   margin-bottom: 20px;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-
-
-.home-container .logo {
-  width: 250px; 
-  height: auto;
-  max-width: 100%; 
-  margin-bottom: 10px;
-}
-
-.profile-section {
-  margin-top: 30px; 
-}
-
-.profile-picture-placeholder {
-  width: 100px;
-  height: 100px;
-  background-color: #e0e0e0;
-  border-radius: 50%;
-  margin: 0 auto;
-  margin-bottom: 20px; 
-}
-
-.profile-section p {
-  margin-bottom: 20px; 
-}
-
-.training-log-button {
-  background-color: #ffbe59;
-  padding: 10px 20px;
+  font-weight: bold;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
 }
 
-.training-log-button:hover {
-  background-color: #f927ac;
+.logo-image2 {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0 20px 30px 20px;
+  color: white;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-button {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

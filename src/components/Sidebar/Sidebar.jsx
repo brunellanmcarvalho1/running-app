@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaPlus, FaRunning, FaRegCalendarAlt } from "react-icons/fa";
+import { FaHome, FaPlus, FaRunning, FaRegCalendarAlt, FaInfoCircle } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const Sidebar = () => {
