@@ -1,10 +1,10 @@
 import { useState } from "react";
 import TrainingForm from "../../components/TrainingForm/TrainingForm";
+import { useNavigate } from "react-router-dom";
 import "./AddRunningPage.css";
 
 const AddRunningPage = () => {
-  const [isSaved, setIsSaved] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = async (formData) => {
     try {
       const response = await fetch(
@@ -19,9 +19,9 @@ const AddRunningPage = () => {
         throw new Error("Error saving training");
       }
       const result = await response.json();
-      console.log("Training Saved", result);
-      setIsSaved(true);
-      alert("Training saved successfully!");
+
+      alert("Training Saved", result);
+      navigate("/training-log");
     } catch (error) {
       console.error("Error saving training", error);
       alert("Failed to save training. Please try again.");
