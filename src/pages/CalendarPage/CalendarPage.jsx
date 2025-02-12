@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
+import streetRunImage from "../../assets/streetRun.jpg";
+import trailRunImage from "../../assets/trailRun.jpg";
+import trackRunImage from "../../assets/trackRun.jpg";
+import treadmillRunImage from "../../assets/treadmillRun.jpg";
 import "react-calendar/dist/Calendar.css";
 import "./CalendarPage.css";
 
@@ -8,6 +12,21 @@ const CalendarPage = () => {
   const [value, setValue] = useState(new Date());
   const [trainings, setTrainings] = useState([]);
   const navigate = useNavigate();
+
+  const getRunTypeImage = (runType) => {
+    switch (runType) {
+      case "streetRun":
+        return streetRunImage;
+      case "trailRun":
+        return trailRunImage;
+      case "trackRun":
+        return trackRunImage;
+      case "treadmillRun":
+        return treadmillRunImage;
+      default:
+        return "";
+    }
+  };
 
   useEffect(() => {
     // Function to fetch training from the API
@@ -33,10 +52,11 @@ const CalendarPage = () => {
           new Date(training.date).toDateString() === date.toDateString()
       );
       if (training) {
+        const runTypeImage = getRunTypeImage(training.runType);
         return (
           <div className={`training ${training.isDone ? "done" : "scheduled"}`}>
             <img
-              src={training.runTypeImage}
+              src={runTypeImage}
               alt={training.runType}
               className="training-image"
             />
