@@ -1,5 +1,5 @@
-/* .training-cards-container {
-    display: flex;
+.training-cards-container {
+    display: lex;
     flex-wrap: wrap;
     gap: 16px; 
     justify-content: center; 
