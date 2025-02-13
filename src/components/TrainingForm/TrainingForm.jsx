@@ -25,7 +25,6 @@ const TrainingForm = ({
   const [isDone, setIsDone] = useState(initialData.isDone || false);
   const [runTypeImage, setRunTypeImage] = useState("");
 
-  // UseEffect to update the image according to the type of run
   useEffect(() => {
     if (formData.runType) {
       switch (formData.runType) {
