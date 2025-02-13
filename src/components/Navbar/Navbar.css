@@ -28,7 +28,7 @@
   color: #ffbe59; /* Orange-Yellow from your palette */
 }
 
-.sign-in-btn {
+.sign-up-btn {
   background-color: #5be0e6; /* Cyan from your palette */
   color: white;
   padding: 8px 16px;
@@ -37,6 +37,45 @@
   font-weight: bold;
 }
 
-.sign-in-btn:hover {
+.sign-up-btn:hover {
+  background-color: #f927ac; /* Pink on hover */
+}
+
+.login-btn {
+  background-color: #5be0e6; /* Cyan from your palette */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background-color: #f927ac; /* Pink on hover */
+}
+
+.home-btn {
+  background-color: #5be0e6; /* Cyan from your palette */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.home-btn:hover {
+  background-color: #f927ac; /* Pink on hover */
+}
+
+.logout-btn {
+  background-color: #5be0e6; /* Cyan from your palette */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
   background-color: #f927ac; /* Pink on hover */
 }

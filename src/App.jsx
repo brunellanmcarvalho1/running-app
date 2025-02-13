@@ -9,6 +9,10 @@ import About from "./pages/AboutPage/About";
 import TrainingDetails from "./pages/Trainingdetails/TrainingDetails";
 import TrainingLogPage from "./pages/TrainingLogPage/TrainingLogPage";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import IsAnon from "./components/isAnon";
+import IsPrivate from "./components/IsPrivate";
 import "./App.css";
 
 function App() {
@@ -34,17 +38,37 @@ function App() {
           <Navbar />
           <div className="p-4">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/training-log" element={<TrainingLogPage />} />
-              <Route path="/add-running" element={<AddRunningPage />} />
+              <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/training-log" element={<TrainingLogPage />} />
+              <Route exact path="/add-running" element={<AddRunningPage />} />
               <Route path="/about" element={<About />} />
               <Route
+                exact
                 path="/training/:trainingId"
                 element={<TrainingDetails />}
               />
               <Route
+                exact
                 path="/calendar"
                 element={<CalendarPage trainings={trainings} />}
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  <IsAnon>
+                    <LoginPage />
+                  </IsAnon>
+                }
+              />
+              <Route
+                exact
+                path="/signup"
+                element={
+                  <IsAnon>
+                    <SignUpPage />
+                  </IsAnon>
+                }
               />
             </Routes>
           </div>
