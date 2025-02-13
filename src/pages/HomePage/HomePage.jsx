@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import "./HomePage.css";
 import Logo from "../../assets/logo.png";
@@ -50,6 +51,7 @@ const HomePage = () => {
         <Link to="/add-running" className="cta-button">
           Log a Run
         </Link>
+
       </div>
     </div>
   );
