@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Trash2, Info } from "lucide-react"; // Removed Pencil icon
+import { Trash2, Info } from "lucide-react"; 
 import streetRunImage from "../../assets/streetRun.jpg";
 import trailRunImage from "../../assets/trailRun.jpg";
 import trackRunImage from "../../assets/trackRun.jpg";
