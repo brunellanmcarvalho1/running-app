@@ -80,7 +80,6 @@ const TrainingCard = ({ run, onEdit, onDelete }) => {
           </button>
         </div>
       </div>
-    </div>
     </Link>
   );
 };
