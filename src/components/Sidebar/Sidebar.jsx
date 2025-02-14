@@ -72,6 +72,16 @@ const Sidebar = () => {
             {isExpanded && <span className="ml-2 text-white">About Us</span>}
           </Link>
         </li>
+        <li>
+          <Link
+            to="/about"
+            className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
+          >
+            <FaInfoCircle className="text-2xl text-white" />
+            {isExpanded && <span className="ml-2 text-white">About Us</span>}
+          </Link>
+        </li>
+
       </ul>
     </div>
   );

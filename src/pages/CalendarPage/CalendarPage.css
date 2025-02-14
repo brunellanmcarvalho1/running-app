@@ -1,49 +1,69 @@
 .calendar-page {
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .react-calendar {
-  background-color: #fff;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 12px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   max-width: 800px;
-  height: auto;
+  padding: 20px;
+  color: white;
 }
 
 .react-calendar__navigation button {
-  color: #3498db;
+  color: white;
   background: none;
   border: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.react-calendar__navigation button:hover {
+  color: #ffbe59;
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  color: #3498db;
+  color: #ffbe59;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .react-calendar__tile {
   background: none;
-  color: #000;
-  height: 100px;
+  color: white;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.react-calendar__tile:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 .react-calendar__tile--active {
   background: #f927ac;
   color: white;
+  font-weight: bold;
 }
 
 .react-calendar__tile--now {
   background: #ffbe59;
   color: black;
+  font-weight: bold;
 }
 
 .training {
@@ -55,8 +75,10 @@
 
 .training.done {
   background-color: #f927ac;
+  border-radius: 8px;
 }
 
 .training.scheduled {
-  background-color: #3498db;
+  background-color: #5be0e6;
+  border-radius: 8px;
 }

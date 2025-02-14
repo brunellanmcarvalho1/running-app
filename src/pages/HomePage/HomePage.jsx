@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from "react";
 import "./HomePage.css";
-import Logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import Logo from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [totalDistance, setTotalDistance] = useState(0);
@@ -37,6 +37,7 @@ const HomePage = () => {
           className="logo-image2"
           style={{ width: "400px" }}
         />
+
       </div>
 
       <p>
