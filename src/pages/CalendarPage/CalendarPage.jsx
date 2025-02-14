@@ -29,7 +29,7 @@ const CalendarPage = () => {
   };
 
   useEffect(() => {
-    // Function to fetch training from the API
+
     const fetchTrainings = async () => {
       try {
         const response = await fetch(

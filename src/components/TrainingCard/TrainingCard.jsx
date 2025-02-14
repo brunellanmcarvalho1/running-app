@@ -60,7 +60,8 @@ const TrainingCard = ({ run }) => {
   };
 
   return (
-    <div className="relative bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-200 transition-all mb-8">
+   <div className="training-card">
+   <div className="relative bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-200 transition-all mb-8">
       {runTypeImage && (
         <img
           src={runTypeImage}
@@ -92,6 +93,7 @@ const TrainingCard = ({ run }) => {
           <Trash2 size={20} />
         </button>
       </div>
+    </div>
     </div>
   );
 };
