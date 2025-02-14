@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Trash2, Info } from "lucide-react"; // Removed Pencil icon
+import { Trash2, Info } from "lucide-react"; 
 import streetRunImage from "../../assets/streetRun.jpg";
 import trailRunImage from "../../assets/trailRun.jpg";
 import trackRunImage from "../../assets/trackRun.jpg";
@@ -73,7 +73,9 @@ const TrainingCard = ({ run }) => {
       </h3>
 
       <p className="text-gray-700 font-medium">{getTypeLabel(run.runType)}</p>
-      <p className="text-gray-700 font-medium">{getTypeLabel(run.trainingType)}</p>
+      <p className="text-gray-700 font-medium">
+        {getTypeLabel(run.trainingType)}
+      </p>
 
       <div className="flex justify-center space-x-4 mt-4">
         <button

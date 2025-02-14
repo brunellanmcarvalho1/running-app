@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import "./HomePage.css";
 import Logo from '../../assets/logo.png';
@@ -9,10 +10,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchTrainings = async () => {
       try {
-        const response = await fetch("https://running-app-backend-zuaf.onrender.com/trainings");
+        const response = await fetch(
+          "https://running-app-backend-zuaf.onrender.com/trainings"
+        );
         const data = await response.json();
         const total = data
-          .filter(training => training.isDone)
+          .filter((training) => training.isDone)
           .reduce((sum, training) => sum + parseFloat(training.distance), 0);
         setTotalDistance(total);
       } catch (error) {
@@ -26,9 +29,15 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <h2>Welcome!</h2>
-      
+
       <div className="flex justify-center">
-        <img src={Logo} alt="Running Tracker Logo" className="logo-image2" style={{ width: "400px" }}/>
+        <img
+          src={Logo}
+          alt="Running Tracker Logo"
+          className="logo-image2"
+          style={{ width: "400px" }}
+        />
+
       </div>
 
       <p>
@@ -37,8 +46,13 @@ const HomePage = () => {
       <p className="total-distance">Total Kilometers Run: {totalDistance} km</p>
 
       <div className="cta-buttons">
-        <Link to="/training-log" className="cta-button">View Trainings</Link>
-        <Link to="/add-running" className="cta-button">Log a Run</Link>
+        <Link to="/training-log" className="cta-button">
+          View Trainings
+        </Link>
+        <Link to="/add-running" className="cta-button">
+          Log a Run
+        </Link>
+
       </div>
     </div>
   );
