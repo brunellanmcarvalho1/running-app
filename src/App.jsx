@@ -11,7 +11,7 @@ import TrainingLogPage from "./pages/TrainingLogPage/TrainingLogPage";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import IsAnon from "./components/isAnon";
+import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
 import "./App.css";
 
