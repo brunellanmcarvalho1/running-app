@@ -105,7 +105,7 @@ const TrainingForm = ({
                 onChange={() => setIsDone(false)}
                 className="w-5 h-5"
               />
-              Scheduled
+              Scheduling
               <span className="checkmark"></span>
             </label>
           </div>

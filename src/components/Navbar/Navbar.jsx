@@ -30,7 +30,7 @@ const Navbar = () => {
         )}
 
         {!isLoggedIn && (
-          <>
+          <div className="auth-buttons">
             <Link to="/signup">
               {" "}
               <button className="sign-up-btn"> Sign Up </button>{" "}
@@ -39,7 +39,7 @@ const Navbar = () => {
               {" "}
               <button className="login-btn"> Login </button>{" "}
             </Link>
-          </>
+          </div>
         )}
       </div>
     </nav>

@@ -25,11 +25,11 @@
 .slogan {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ffbe59; /* Orange-Yellow from your palette */
+  color: #ffbe59; 
 }
 
 .sign-up-btn {
-  background-color: #5be0e6; /* Cyan from your palette */
+  background-color: #5be0e6; 
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
@@ -38,11 +38,11 @@
 }
 
 .sign-up-btn:hover {
-  background-color: #f927ac; /* Pink on hover */
+  background-color: #f927ac; 
 }
 
 .login-btn {
-  background-color: #5be0e6; /* Cyan from your palette */
+  background-color: #5be0e6; 
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
@@ -51,11 +51,11 @@
 }
 
 .login-btn:hover {
-  background-color: #f927ac; /* Pink on hover */
+  background-color: #f927ac; 
 }
 
 .home-btn {
-  background-color: #5be0e6; /* Cyan from your palette */
+  background-color: #5be0e6; 
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
@@ -64,11 +64,11 @@
 }
 
 .home-btn:hover {
-  background-color: #f927ac; /* Pink on hover */
+  background-color: #f927ac; 
 }
 
 .logout-btn {
-  background-color: #5be0e6; /* Cyan from your palette */
+  background-color: #5be0e6; 
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
@@ -77,5 +77,11 @@
 }
 
 .logout-btn:hover {
-  background-color: #f927ac; /* Pink on hover */
+  background-color: #f927ac; 
+}
+
+
+.auth-buttons {
+  display: flex;
+  gap: 10px; /* Creates space between buttons */
 }

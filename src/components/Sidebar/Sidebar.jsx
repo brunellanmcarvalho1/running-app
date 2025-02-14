@@ -38,7 +38,7 @@ const Sidebar = () => {
             className="flex items-center p-4 hover:bg-[#ffbe59] transition-colors duration-200"
           >
             <FaPlus className="text-2xl text-white" />
-            {isExpanded && <span className="ml-2 text-white">Add Running</span>}
+            {isExpanded && <span className="ml-2 text-white">Add Training</span>}
           </Link>
         </li>
         <li>
